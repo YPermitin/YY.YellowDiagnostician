@@ -51,11 +51,21 @@ void YellowDiagnostician::sleep(const variant_t &delay) {
     this_thread::sleep_for(chrono::seconds(get<int32_t>(delay)));
 }
 variant_t YellowDiagnostician::currentDate() {
-    //using namespace std;
-    //tm current{};
-    //time_t t = time(nullptr);
-    //localtime_s(&current, &t);
-    //return current;
+#ifdef WIN32
+    using namespace std;
+    tm current{};
+    time_t t = time(nullptr);
+    localtime_s(&current, &t);
+    return current;
+#endif
+#if defined( __linux__ )
+    using namespace std;
+    time_t t = time(nullptr);
+    time (&t);
+    auto tm = localtime (&t);
+    return tm;
+#endif
+
     return nullptr;
 }
 variant_t YellowDiagnostician::processId() {
