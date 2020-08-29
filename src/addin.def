@@ -1,4 +1,4 @@
-LIBRARY    "AddInNativeWin32_02"
+LIBRARY "SampleAddIn"
 
 EXPORTS
 GetClassObject
