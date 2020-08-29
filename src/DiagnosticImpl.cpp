@@ -116,12 +116,12 @@ namespace yy {
 #endif
 
 #if defined( __linux__ )
-        char szTmp[32];
-        sprintf(szTmp, "/proc/%d/exe", getpid());
-        int bytes = MIN(readlink(szTmp, pBuf, len), len - 1);
-        if (bytes >= 0)
-            pBuf[bytes] = '\0';
-        return bytes;
+        char cmd[25];
+        char exepath[PATH_MAX + 1] = {0};
+
+        sprintf(cmd, "/proc/%d/exe", getpid());
+        readlink(cmd, exepath, 1024);
+        return std::string(exepath);
 #endif
 
         return nullptr;

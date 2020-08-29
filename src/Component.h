@@ -46,7 +46,12 @@ typedef std::variant<
         double,
         bool,
         std::string,
+#ifdef WIN32
         std::tm,
+#endif
+#if defined( __linux__ )
+        tm,
+#endif
         std::vector<char>
 > variant_t;
 
