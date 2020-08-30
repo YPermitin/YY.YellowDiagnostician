@@ -1041,3 +1041,5 @@ dkms.conf
 
 # IDEA
 .idea/*
+# CMake
+CMakeSettings.json

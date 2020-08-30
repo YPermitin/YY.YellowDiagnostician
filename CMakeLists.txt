@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(TARGET YellowDiagnostician)
 
 option(CASE_INSENSITIVE "Case insensitive method names" OFF)
-option(STATIC_CRT "Static CRT linkage" OFF)
+option(STATIC_CRT "Static CRT linkage" ON)
 option(OUT_PARAMS "Support output parameters" OFF)
 
 add_library(${TARGET} SHARED
